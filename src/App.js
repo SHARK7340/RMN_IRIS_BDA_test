@@ -3,6 +3,7 @@ import AddTaskForm from './components/AddTaskForm'
 import UpdateForm from './components/UpdateForm'
 import ToDo from './components/ToDo'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import DataTable from 'react-data-table-component'
 import './App.css'
 
 function App() {
@@ -90,6 +91,31 @@ function App() {
     setUpdateData('')
   }
 
+  //Datatable
+  const columns = [
+    {
+        name: 'Title',
+        selector: row => row.title
+    },
+    {
+        name: 'Year',
+        selector: row => row.year
+    },
+  ]
+
+  const data = [
+      {
+          id: 1,
+          title: 'Beetlejuice',
+          year: '1988'
+      },
+      {
+          id: 2,
+          title: 'Ghostbusters',
+          year: '1984'
+      }
+  ]
+
   return (
     <div className="container App">
       <br /><br />
@@ -119,6 +145,12 @@ function App() {
         markDone={markDone}
         setUpdateData={setUpdateData}
         deleteTask={deleteTask}
+      />
+
+      <br/><br/><br/>
+      <DataTable
+          columns={columns}
+          data={data}
       />
     </div>
   )
